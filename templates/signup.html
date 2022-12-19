@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container"> 
+    <div class="login card">
+        <h1  class="text-center">Sign Up</h1>
+        <form id="signup" action="{% url 'sign_up' %}" method="POST">
+            <p id="error"></p>
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text">
+            <label for="firstname">Firstname</label>
+            <input id="first_name" name="first_name" type="text">
+            <label for="lastname">Lastname</label>
+            <input id="last_name" name="last_name" type="text">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password">
+            <label for="password2">Re-type Password</label>
+            <input id="password2" name="password2" type="password">
+            <input class="mysub btn btn-primary mt-2" type="submit" value="Sign Up">
+            
+        </form>
+    </div>
+</div>
+<script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+</script>
+<script src="{% static 'js/create_user.js' %}"></script> 
+{% endblock content %}

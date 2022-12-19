@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Quizes</h1>
+    <div class="row">
+       
+{% for res in scores %}
+<div class="col-md-4 card p-3 mr-4 ml-2 mt-2 mb-2">  
+    <h4>{{ res.quiz.title }}</h4>
+    <hr>
+    <p><b>Total Questions:</b> {{ res.questions}}</p>
+    <p><b>Passed:</b>  {{res.passed}}</p>
+    <p><b>Failed:</b> {{res.failed}}</p>
+    <p><b>Date Submitted:</b> {{res.time_in}}</p>
+    <p><b>Percentage:</b> {{res.get_percentage}}%</p>
+
+</div>
+{% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

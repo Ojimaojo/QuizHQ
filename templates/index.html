@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="jumbotron">
+        <div class=" p-5 text-center right-design">
+            <h1 class="special-text mt-3">Earn With what You Know</h1>
+            <h3 class='mt-5 p-2'>Get Cash Rewards for Taking Quiz or Writting Essays</h3>
+            <a class="btn btn-primary btn-lg mt-5" href="{% url 'sign_up' %}">Get Started</a>
+        </div>
+</div>
+<section class=" container">
+    <div class="myrow item-main">
+        <div class="col-md-3 p-4 m-2 card main-items">
+            <h4 class="p-2">Quiz</h4>
+            <hr>
+            <div class="card-body">
+                <p>Answer Questions correctly and get rewarded, challenge your knowlegde and see how brilliant you truely are.</p>
+            </div>
+            <br>
+           <a class="btn btn-primary" href="{% url 'quiz_list' %}">Get Started</a>
+        </div>
+        <div class="col-md-3 p-4 m-2 card main-items">
+            <h4 class="p-2">Practice Quiz</h4>
+            <hr>
+            <div class="card-body">
+                <p></p>Try your Hands on these free quiz to get acquainted with our system and you could win some amazing prizes.</p>
+            </div>
+            <br>
+            <a class="btn btn-primary" href="{% url 'freequiz_list' %}">Get Started</a>
+        </div>
+        <div class="col-md-3 p-4 m-2 card main-items">
+            <h4 class="p-2">Leader Board</h4>
+            <hr>
+            <div class="card-body">
+                <p>See all our Top winners and the prizes they have won, see your ranking on the Leader Board.</p>
+            </div>
+            <br>
+            <a class="btn btn-primary" href="{% url 'leader_board' %}">Get Started</a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

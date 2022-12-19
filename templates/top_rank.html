@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <div class="login">
+        <h3 class="text-center">Highest Scorers</h3>
+        <hr>
+        <table class="text-center" id="top-table">
+            <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>Title of Quiz</td>
+                    <td>Percentage Passed</td>
+                    <td>Prize Won</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for res in results %}
+                <tr>
+                    <td>{{res.user.username}}</td>
+                    <td>{{res.quiz.title}}</td>
+                    <td>{{res.get_percentage}}%</td>
+                    {% if res.get_percentage < 100 %}
+                    <td> - </td>
+                    {% else %}
+                    <td>N{{res.quiz.prize}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

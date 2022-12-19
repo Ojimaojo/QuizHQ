@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="card p-3 mb-4 mt-2">
+        <h3 class="text-center">There Was an Error with the payment system</h3>
+        <p class="text-center mt-2 mbb-2">Go to <a class="btn btn-info" href="{% url 'dashboard' %}">Dashboard</a></p>
+        <hr>
+        <p class="text-center mt-2 mbb-2">Send a message to the Admin <a class="btn btn-info" href="{% url 'contact' %}">Contact</a></p>
+    </div>
+</div>
+{% endblock %}

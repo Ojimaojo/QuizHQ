@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1> Dashboard</h1>
+    <hr>
+    <p>Username: {{dashboard.user.username}}</p>
+    <p>Name: {{dashboard.user.first_name}} {{dashboard.user.last_name}}</p>
+    <p>Email: {{dashboard.user.email}}</p>
+    <p>Phone: {{dashboard.phone}}</p>
+    <br>
+    <h3>Quiz and Essays</h3>
+    <hr>
+    <p>Answered Quiz: <a class="btn btn-primary" href="{% url 'results' %}">Score</a></p>
+    <br>
+    <h3>Wallet</h3>
+    <hr>
+    <p>Balance: N{{wallet.balance}} | <span><a class="btn btn-primary" href="{% url 'fund_form' %}">Fund Wallet</a></span> | <span><a class="btn btn-danger" href="{% url 'withdraw_form' %}">Withdraw</a></span></p>
+    <br>
+    <h3>Transactions</h3>
+    <hr>
+    <table class="text-center mb-5">
+        <thead>
+            <tr>
+                <td>Amount</td>
+                <td>Action</td>
+                <td>Reference</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tran in transactions %}
+            <tr>
+                <td>{{tran.amount}}</td>
+                <td>{{tran.action}}</td>
+                <td>{{tran.tx_ref}}</td>
+                <td>
+                    {% if tran.completed %}
+                    Succesful
+                    {% else %}
+                    Failed
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            {% for wid in withdrawals %}
+            <tr>
+                <td>{{wid.amount}}</td>
+                <td>{{wid.action}}</td>
+                <td>{{wid.bank}} {{wid.account_name}} {{wid.account }}  </td>
+                <td>{{wid.status}} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock content %}

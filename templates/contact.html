@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="login card">
+        <h3 class="text-center">Contact Us</h3>
+        <hr>
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <input name="name" type="text" required>
+            <label for="email">Email</label>
+            <input name="email" type="email" required>
+            <label for="name">Phone</label>
+            <input name="phone" type="text" required>
+            <label for="message">message</label>
+            <textarea name="message" id="msg" cols="30" rows="10"></textarea>
+            <input class="mysub btn btn-primary" type="submit" value="Send">
+        </form>
+    </div>
+</div>
+{% endblock %} 

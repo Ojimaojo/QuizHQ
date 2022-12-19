@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="login card p-5">
+        <h3 class="text-center">Withdraw</h3>
+        <p class="text-center"><b>Note: </b> Withdrawals can take up to 7 working days and withdrawals below N1000 would not be processed</p>
+        <form action="{% url 'withdraw' %}" method="post"> 
+            {% csrf_token %}
+            <label for="amount">Amount</label>
+            <input name="amount" type="text">
+            <label for="bank">Bank</label>
+            <input name="bank" type="text">
+            <label for="account_name">Acount Name</label>
+            <input name="account_name" type="text">
+            <label for="account">Acount Number</label>
+            <input name="account" type="number">
+            <input class="mysub btn btn-primary mt-2" type="submit" value="Withdraw">
+        </form>
+    </div>
+</div>
+{% endblock %}

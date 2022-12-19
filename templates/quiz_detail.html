@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="login card">
+        <h3 class="text-center">{{ quiz.title }}</h3>
+        <hr>
+
+    <form id="quiz_form" action="" method="post">
+        <p><b>Total Time:</b> <span id="quiz_t">{{quiz.duration}}</span>Min  | <b>Time Left:</b> <span id="timer"></span></p>
+    {% csrf_token %}
+    {% for p in questions %}
+    <p><b>{{p.text}}</b></p>
+    {% for opt in p.get_options%}
+    <input class="" type="radio" name="{{p}}" id="{{opt.id}}" value="{{opt.text}}"> {{opt.text}}<br>
+    {% endfor %}
+{% endfor %}
+<input class="btn mysub btn-primary mt-2" type="submit" value="Done">
+</form>
+    </div>
+</div>
+<script src="{% static 'js/timer.js' %}"></script> 
+{% endblock content %}
